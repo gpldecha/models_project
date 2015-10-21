@@ -4,7 +4,7 @@ project(objects)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED REQUIRED COMPONENTS roscpp tf visualization_msgs optitrack_rviz)
+find_package(catkin REQUIRED REQUIRED COMPONENTS roscpp tf visualization_msgs optitrack_rviz wrap_object)
 
 find_package(Armadillo)
 
@@ -78,9 +78,6 @@ catkin_package(
 ## Build ##
 ###########
 
-set(LIB_WRAP_OBJ /usr/local/lib/wrapobject/libwrapobject.so)
-link_directories(/usr/local/lib/wrapobject)
-
 
 set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include )
 set(SRC_DIR     ${CMAKE_CURRENT_SOURCE_DIR}/src     )
@@ -101,7 +98,7 @@ include_directories(${INCLUDE_DIR} ${ARMADILLO_INCLUDE_DIRS})
 
 
 add_library(sockets SHARED  ${SRC_FILES} ${HEADER_FILES} )
-target_link_libraries(sockets ${catkin_LIBRARIES} armadillo ${LIB_WRAP_OBJ})
+target_link_libraries(sockets ${catkin_LIBRARIES} armadillo)
 
 add_library(vis_objects SHARED  ${INCLUDE_DIR}/objects/vis_socket.h ${SRC_DIR}/vis_socket.cpp )
 target_link_libraries(sockets ${catkin_LIBRARIES} ${LIB_WRAP_OBJ})

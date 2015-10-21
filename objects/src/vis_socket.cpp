@@ -15,7 +15,7 @@ void Vis_socket::initialise(std::size_t num_points, float scale){
 
     for(std::size_t i = 0; i < socket_marker_array.markers.size();i++){
 
-        socket_marker_array.markers[i].header.frame_id = "/world";
+        socket_marker_array.markers[i].header.frame_id = "/world_frame";
         socket_marker_array.markers[i].type            = visualization_msgs::Marker::LINE_STRIP;
         socket_marker_array.markers[i].id              = i;
         socket_marker_array.markers[i].color.a         = 1.0f;
